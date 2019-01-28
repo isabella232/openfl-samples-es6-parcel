@@ -55,9 +55,18 @@ export class Main extends Sprite {
     // this.fps = new FPS ();
     // this.addChild (this.fps);
 
-    this.stage.addEventListener(MouseEvent.MOUSE_DOWN, this.stage_onMouseDown.bind(this));
-    this.stage.addEventListener(MouseEvent.MOUSE_UP, this.stage_onMouseUp.bind(this));
-    this.stage.addEventListener(Event.ENTER_FRAME, this.stage_onEnterFrame.bind(this));
+    this.stage.addEventListener(
+      MouseEvent.MOUSE_DOWN,
+      this.stage_onMouseDown.bind(this)
+    );
+    this.stage.addEventListener(
+      MouseEvent.MOUSE_UP,
+      this.stage_onMouseUp.bind(this)
+    );
+    this.stage.addEventListener(
+      Event.ENTER_FRAME,
+      this.stage_onEnterFrame.bind(this)
+    );
 
     for (var i = 0; i < 10; i++) {
       this.addBunny();

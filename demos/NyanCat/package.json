@@ -2,25 +2,13 @@
   "name": "org.openfl.samples.nyancat-es6",
   "version": "1.0.0",
   "private": true,
-  "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-env": "^1.6.1",
-    "openfl": "*",
-    "swf-loader": "^1.0.0",
-    "uglifyjs-webpack-plugin": "^1.1.4",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.10.1",
-    "webpack-merge": "^4.1.1"
-  },
+  "main": "src/app.js",
   "scripts": {
-    "build": "npm run build:prod",
-    "build:dev": "webpack --config webpack.dev.js",
-    "build:prod": "webpack --config webpack.prod.js",
-    "start": "npm run start:dev",
-    "start:dev": "webpack-dev-server --open --config webpack.dev.js",
-    "start:prod": "webpack-dev-server --open --config webpack.prod.js"
+    "build": "openfl process assets/library.swf && parcel build index.html",
+    "start": "openfl process assets/library.swf && parcel index.html --open"
   },
-  "dependencies": {}
+  "dependencies": {
+    "openfl": "latest",
+    "parcel": "latest"
+  }
 }

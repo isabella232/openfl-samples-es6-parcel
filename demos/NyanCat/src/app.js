@@ -1,29 +1,19 @@
 "use strict";
-import Sprite from "openfl/display/Sprite";
-import Stage from "openfl/display/Stage";
-import AssetLibrary from "openfl/utils/AssetLibrary";
-import libraryPath from "./../assets/library.swf";
-
+import { AssetLibrary, Sprite, Stage } from "openfl";
+import libraryPath from "../assets/library.bundle/";
 
 class App extends Sprite {
-	
-	
-	constructor () {
-		
-		super ();
-		
-		AssetLibrary.loadFromFile (libraryPath).onComplete ((library) => {
-			
-			var cat = library.getMovieClip ("NyanCatAnimation");
-			this.addChild (cat);
-			
-		}).onError (e => console.error (e));
-		
-	}
-	
-	
+  constructor() {
+    super();
+
+    AssetLibrary.loadFromFile(libraryPath)
+      .onComplete(library => {
+        var cat = library.getMovieClip("NyanCatAnimation");
+        this.addChild(cat);
+      })
+      .onError(e => console.error(e));
+  }
 }
 
-
-var stage = new Stage (550, 400, 0xFFFFFF, App);
-document.body.appendChild (stage.element);
+var stage = new Stage(550, 400, 0xffffff, App);
+document.body.appendChild(stage.element);

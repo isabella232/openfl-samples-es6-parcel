@@ -1,12 +1,6 @@
-import Sprite from "openfl/display/Sprite";
-import Loader from "openfl/display/Loader";
-import URLRequest from "openfl/net/URLRequest";
-import Event from "openfl/events/Event";
-import BitmapData from "openfl/display/BitmapData";
-import MouseEvent from "openfl/events/MouseEvent";
-import Tilemap from "openfl/display/Tilemap";
-import Tileset from "openfl/display/Tileset";
+import { Event, FPS, IOErrorEvent, Loader, MouseEvent, Sprite, Tilemap, Tileset, URLRequest } from "openfl";
 import Bunny from "./Bunny";
+import wabbit_alpha from "../assets/wabbit_alpha.png";
 
 
 export class Main extends Sprite {
@@ -24,7 +18,10 @@ export class Main extends Sprite {
 			loader.contentLoaderInfo.addEventListener (Event.COMPLETE, (event) => {
 				this.start (loader.content.bitmapData);
 			});
-			loader.load (new URLRequest ("wabbit_alpha.png"));
+			loader.contentLoaderInfo.addEventListener (IOErrorEvent.IO_ERROR, (event) => {
+				console.error (event.text);
+			});
+			loader.load (new URLRequest (wabbit_alpha));
 		});
 		
 	}
@@ -42,11 +39,11 @@ export class Main extends Sprite {
 		this.tileset.addRect (bitmapData.rect);
 		
 		this.tilemap = new Tilemap (this.stage.stageWidth, this.stage.stageHeight, this.tileset);
-		//tilemap = new Tilemap (100, 100, tileset);
+		//this.tilemap = new Tilemap (100, 100, tileset);
 		this.addChild (this.tilemap);
 		
-		// fps = new FPS ();
-		// addChild (fps);
+		// this.fps = new FPS ();
+		// this.addChild (this.fps);
 		
 		this.stage.addEventListener (MouseEvent.MOUSE_DOWN, this.stage_onMouseDown);
 		this.stage.addEventListener (MouseEvent.MOUSE_UP, this.stage_onMouseUp);
